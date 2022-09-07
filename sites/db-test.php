@@ -8,13 +8,12 @@
 </head>
 <body>
 <?php
-  include __DIR__.'/../db.php';
-
-  $result = $db->execute("SELECT * FROM Ksiazka");
-  foreach ($result as $row) {
-    print_r(json_encode($row));
-    echo "</br>";
-  }
+    $mysql = SQLQueryableFactory::createDefault();
+    $result = $mysql->execute("SELECT * FROM test");
+    foreach ($result as $row) {
+        print_r(json_encode($row));
+        echo "</br>";
+    }
 ?>
 </body>
 </html>

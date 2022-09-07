@@ -17,11 +17,11 @@ if (!$filePath || !is_file($filePath)) {
     die("404 Not Found");
   }
 }
-// 1. check that file is not outside of this directory for security
-// 2. check for circular reference to router.php
+// 1. check that file is not outside this directory for security
+// 2. check for circular reference to legacy_legacy_router.php
 // 3. don't serve dotfiles
 if (strpos($filePath, __DIR__ . DIRECTORY_SEPARATOR) === 0 &&
-    $filePath != __DIR__ . DIRECTORY_SEPARATOR . 'router.php' &&
+    $filePath != __DIR__ . DIRECTORY_SEPARATOR . 'legacy_router.php' &&
     substr(basename($filePath), 0, 1) != '.'
 ) {
     if(str_contains($filePath, "/sites")){

@@ -1,0 +1,3 @@
+{
+  "globalVarA": "This should be accessible from all templates"
+}

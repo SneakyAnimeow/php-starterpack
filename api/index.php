@@ -1,5 +1,7 @@
 <?php
-include __DIR__.'/../db.php';
+//not usable in current state
+
+include __DIR__ . '/../legacy_db.php';
 
 $result = $db->execute("SELECT * FROM Ksiazka");
 

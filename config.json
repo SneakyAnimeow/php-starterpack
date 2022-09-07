@@ -1,0 +1,16 @@
+{
+  "mysql": {
+    "host": "localhost",
+    "user": "phpstarterpack",
+    "password": "1111",
+    "database": "php_starterpack"
+  },
+
+  "templateEngine": {
+    "arraySeparator": ","
+  },
+
+  "router": {
+    "errorPrinting": false
+  }
+}

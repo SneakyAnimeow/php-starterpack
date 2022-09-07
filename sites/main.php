@@ -10,5 +10,9 @@
     <p>@motd</p>
 
     @list
+
+    <?php
+        echo "Also it can execute php code";
+    ?>
 </body>
 </html>
