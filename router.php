@@ -1,7 +1,4 @@
 <?php
-
-// needs solid refactor... (its prototype)
-
 chdir(__DIR__);
 $filePath = realpath(ltrim($_SERVER["REQUEST_URI"], '/'));
 if ($filePath && is_dir($filePath)){

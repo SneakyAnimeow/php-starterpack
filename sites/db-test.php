@@ -7,20 +7,17 @@
   <title>Document</title>
 </head>
 <body>
-  <?php
-    require_once(__DIR__.'/../lib/mysql-wrapper.php');
+<?php
+  include __DIR__.'/../db.php';
 
-    $db = new MySQLWrapper(
-      "127.0.0.1",
-      "root",
-      "password123",
-      "Ksiegarnia1"
-    );
-    $result = $db->execute("SELECT * FROM Ksiazka");
-    foreach ($result as $row) {
-      print_r(json_encode($row));
-      echo "</br>";
-    }
-  ?>
+  $result = $db->execute("SELECT * FROM Ksiazka");
+  foreach ($result as $row) {
+    print_r(json_encode($row));
+    echo "</br>";
+  }
+?>
 </body>
 </html>
+
+
+<!-- TODO: this not working with any dynamic router so go debug it -->

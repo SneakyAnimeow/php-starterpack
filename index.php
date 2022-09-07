@@ -13,7 +13,6 @@
     foreach($constants as $key => $value){
         $content = str_replace("@$key", (is_array($value) ? implode(", ", $value) : $value), $content);
     }
-
     echo $content;
 ?>
 </html>
