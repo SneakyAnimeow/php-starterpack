@@ -7,10 +7,12 @@
   },
 
   "templateEngine": {
-    "arraySeparator": ","
+    "arraySeparator": ",",
+    "experimentalJavaScriptSupport": true
   },
 
   "router": {
-    "errorPrinting": false
+    "errorPrinting": false,
+    "experimentalAPISupport": true
   }
 }

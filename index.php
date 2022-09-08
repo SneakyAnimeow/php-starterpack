@@ -27,29 +27,44 @@
         $site = "main";
     }
 
-    if(!file_exists(__DIR__ . "/sites/$site.php")){
-        $content = file_get_contents("framework/internal/404.php");
-    }else{
-        $content = file_get_contents("sites/$site.php");
-    }
+    $content = "";
+    $constants = "";
 
-    if(!file_exists(__DIR__ . "/jsons/$site.json")){
-        $constants = json_decode(file_get_contents("framework/internal/404.json"), true);
-    }else{
-        $constants = json_decode(file_get_contents("jsons/$site.json"), true);
-    }
+    if($site == "api" && $config->getRouter()->getExperimentalAPISupport()){
+        $api = preg_replace('/[^A-Za-z0-9\-]/', "", explode('/', $_SERVER['REQUEST_URI'])[2]);
 
-    foreach([$constants, $globals] as $array){
-        foreach($array as $key => $value){
-            $content = str_replace("@$key", (is_array($value) ? implode($config->getTemplateEngine()->getArraySeparator(), $value) : $value), $content);
+        if(!file_exists(__DIR__ . "/api/$api.php")){
+            $content = file_get_contents("framework/internal/404.php");
+        }else{
+            $content = file_get_contents("api/$api.php");
+        }
+
+    }else{
+        if(!file_exists(__DIR__ . "/sites/$site.php")){
+            $content = file_get_contents("framework/internal/404.php");
+        }else{
+            $content = file_get_contents("sites/$site.php");
+        }
+
+        if(!file_exists(__DIR__ . "/jsons/$site.json")){
+            $constants = json_decode(file_get_contents("framework/internal/404.json"), true);
+        }else{
+            $constants = json_decode(file_get_contents("jsons/$site.json"), true);
+        }
+
+        foreach([$constants, $globals] as $array){
+            foreach($array as $key => $value){
+                $content = str_replace("@$key", (is_array($value) ? implode($config->getTemplateEngine()->getArraySeparator(), $value) : $value), $content);
+            }
+        }
+
+        if($config->getTemplateEngine()->getExperimentalJavaScriptSupport()){
+            echo "<script>
+                        var PHP_GLOBALS = " . json_encode($globals) . ";
+                        var PHP_CONSTANTS = " . json_encode($constants) . ";
+                  </script>";
         }
     }
-
-    //inject js script
-    echo "<script>
-        var PHP_GLOBALS = " . json_encode($globals) . ";
-        var PHP_CONSTANTS = " . json_encode($constants) . ";
-          </script>";
 
     //eval php code
     $content = preg_replace_callback('/<\?php(.*?)\?>/s', function($matches) {

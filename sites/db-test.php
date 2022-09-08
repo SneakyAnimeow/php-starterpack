@@ -17,6 +17,3 @@
 ?>
 </body>
 </html>
-
-
-<!-- TODO: this not working with any dynamic router so go debug it -->

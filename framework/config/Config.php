@@ -23,10 +23,12 @@
                     $config->mysql->database
                 ),
                 new TemplateEngine(
-                    $config->templateEngine->arraySeparator
+                    $config->templateEngine->arraySeparator,
+                    $config->templateEngine->experimentalJavaScriptSupport
                 ),
                 new Router(
-                    $config->router->errorPrinting
+                    $config->router->errorPrinting,
+                    $config->router->experimentalAPISupport
                 )
             );
             return self::$instance;
@@ -65,10 +67,12 @@
                 $json["mysql"]["database"]
             );
             $this->templateEngine = new TemplateEngine(
-                $json["templateEngine"]["arraySeparator"]
+                $json["templateEngine"]["arraySeparator"],
+                $json["templateEngine"]["experimentalJavaScriptSupport"]
             );
             $this->router = new Router(
-                $json["router"]["errorPrinting"]
+                $json["router"]["errorPrinting"],
+                $json["router"]["experimentalAPISupport"]
             );
             return $this;
         }

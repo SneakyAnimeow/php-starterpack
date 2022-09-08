@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a lightweight framework to deal with php and dont go to depression
+Lightweight PHP framework to help you cope with using PHP in a *modern (XD)* way.
 
 ## Features
 
@@ -11,9 +11,8 @@ This is a lightweight framework to deal with php and dont go to depression
 - [x] SQL Wrapper
 - [x] Easy configuration
 - [x] Easy to use
-- [x] Secure by default (XSS, CSRF, SQL Injection)
 - [x] *__EXPERIMENTAL__ JS Integration*
-- [ ] More to come...
+- [x] *__EXPERIMENTAL__ API*
 
 ---
 
