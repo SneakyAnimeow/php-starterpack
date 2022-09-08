@@ -34,7 +34,7 @@
     }
 
     if(!file_exists(__DIR__ . "/jsons/$site.json")){
-        $constants = json_decode(file_get_contents("framework/internal/404.php"), true);
+        $constants = json_decode(file_get_contents("framework/internal/404.json"), true);
     }else{
         $constants = json_decode(file_get_contents("jsons/$site.json"), true);
     }
