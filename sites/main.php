@@ -11,8 +11,18 @@
 
     @list
 
+    <br>
+
     <?php
         echo "Also it can execute php code";
     ?>
+
+    <br>
+
+    @globalVarA
+
+    <script>
+        document.write(PHP_CONSTANTS["motd"]);
+    </script>
 </body>
 </html>

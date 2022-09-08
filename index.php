@@ -11,6 +11,12 @@
     include(__DIR__.'/framework/config/Router.php');
     include(__DIR__.'/framework/config/TemplateEngine.php');
 
+    $globals = json_decode(file_get_contents("globals.json"));
+
+    foreach ($globals as $key => $value) {
+        $GLOBALS[$key] = $value;
+    }
+
     $config = Config::init(file_get_contents("config.json"));
 
     error_reporting($config->getRouter()->getErrorPrinting());
@@ -33,9 +39,17 @@
         $constants = json_decode(file_get_contents("jsons/$site.json"), true);
     }
 
-    foreach($constants as $key => $value){
-        $content = str_replace("@$key", (is_array($value) ? implode($config->getTemplateEngine()->getArraySeparator(), $value) : $value), $content);
+    foreach([$constants, $globals] as $array){
+        foreach($array as $key => $value){
+            $content = str_replace("@$key", (is_array($value) ? implode($config->getTemplateEngine()->getArraySeparator(), $value) : $value), $content);
+        }
     }
+
+    //inject js script
+    echo "<script>
+        var PHP_GLOBALS = " . json_encode($globals) . ";
+        var PHP_CONSTANTS = " . json_encode($constants) . ";
+          </script>";
 
     //eval php code
     $content = preg_replace_callback('/<\?php(.*?)\?>/s', function($matches) {
