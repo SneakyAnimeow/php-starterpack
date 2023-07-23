@@ -2,7 +2,7 @@
 
 ## Description
 
-Lightweight PHP framework to help you cope with using PHP in a *modern (XD)* way.
+Lightweight PHP framework to help you cope with using PHP in a *modern * way.
 
 ## Features
 
@@ -26,9 +26,7 @@ Lightweight PHP framework to help you cope with using PHP in a *modern (XD)* way
 
 ---
 
-Son, always remember: PHP is a bad language, but it's the only one I know.
-Also, I'm not responsible for any damage caused by this code.
-And if you're reading this, you're probably a developer, so you should know what you're doing.
+If you're reading this, you're probably a developer, so you should know what you're doing.
 
 Good luck, have fun!
 
