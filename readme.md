@@ -2,7 +2,7 @@
 
 ## Description
 
-Lightweight PHP framework to help you cope with using PHP in a *modern * way.
+Experimental Lightweight PHP framework
 
 ## Features
 
